@@ -1,4 +1,3 @@
-# Build stage
 FROM maven:3.8.4-openjdk-17-slim AS build
 WORKDIR /app
 COPY pom.xml .
@@ -6,13 +5,8 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 RUN mvn clean package -DskipTests -B
 
-# Run stage
 FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
-
-# Copy the certificate
-COPY isrgrfoot1.pem /app/certs/ca.pem
-
 COPY --from=build /app/target/*.jar app.jar
-EXPOSE 8080
+EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "app.jar"]
