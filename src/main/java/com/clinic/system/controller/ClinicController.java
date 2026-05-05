@@ -20,6 +20,11 @@ public class ClinicController {
         return clinicRepository.findAll();
     }
 
+    @GetMapping("/test")
+public String test() {
+    return "ClinicController is working!";
+}
+
     @PutMapping("/{id}/toggle-status")
     public ResponseEntity<?> toggleClinicStatus(@PathVariable Long id) {
         return clinicRepository.findById(id).map(clinic -> {
