@@ -16,9 +16,9 @@ public class RegistrationRequest {
     private String streetAddress;
     private LocalDate exposureDate;
     private String animalType;
+    private String otherAnimalSpecify;
     private String exposureType;      // ADD THIS
     private String placeOfExposure;   // ADD THIS
-    private String otherAnimalSpecify; // ADD THIS
     private Long clinicId;
 
 

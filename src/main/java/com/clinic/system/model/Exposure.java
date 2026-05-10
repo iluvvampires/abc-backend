@@ -36,6 +36,9 @@ public class Exposure {
     @Column(name = "animal_type", nullable = false)
     private String animalType;
 
+    @Column(name = "other_animal_specify")
+    private String otherAnimalSpecify;
+
     @Column(name = "bite_category")
     private String biteCategory;
 
@@ -73,6 +76,9 @@ public class Exposure {
     public String getAnimalType() {
         return animalType;
     }
+
+    public String getOtherAnimalSpecify() { return otherAnimalSpecify; }
+    public void setOtherAnimalSpecify(String otherAnimalSpecify) { this.otherAnimalSpecify = otherAnimalSpecify; }
 
     public String getBiteCategory() {  // Fixed: was getBitCategory
         return biteCategory;

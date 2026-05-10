@@ -81,6 +81,7 @@ public class RegistrationController {
             
             // Set other exposure fields
             exp.setAnimalType(req.getAnimalType() != null ? req.getAnimalType() : "Unknown");
+            exp.setOtherAnimalSpecify(req.getOtherAnimalSpecify());
             exp.setExposureType(req.getExposureType() != null ? req.getExposureType() : "Bite");
             exp.setPlaceOfExposure(req.getPlaceOfExposure() != null ? req.getPlaceOfExposure() : "Not specified");
 
