@@ -1,5 +1,6 @@
 package com.clinic.system.controller;
 
+import java.util.Map;
 import com.clinic.system.dto.AuthRequest;
 import com.clinic.system.dto.AuthResponse;
 import com.clinic.system.model.Clinic;
@@ -19,7 +20,7 @@ public class AuthController {
 
     @Autowired
     private UserRepository userRepository;
-    
+
     @Autowired
     private ClinicRepository clinicRepository;
 
@@ -40,20 +41,35 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> signup(@RequestBody User userRequest) {
-        if (userRepository.findByUsername(userRequest.getUsername()).isPresent()) {
+    public ResponseEntity<?> signup(@RequestBody Map<String, Object> payload) {
+        String username = (String) payload.get("username");
+        String password = (String) payload.get("password");
+        String roleStr = (String) payload.get("role");
+
+        // clinicId might be null or a Number
+        Long clinicId = null;
+        if (payload.get("clinicId") != null) {
+            clinicId = Long.valueOf(payload.get("clinicId").toString());
+        }
+
+        // Check if user exists
+        if (userRepository.findByUsername(username).isPresent()) {
             return ResponseEntity.badRequest().body("Username already exists");
         }
-        userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
-        // Ensure clinic is set if role is EMPLOYEE
-        if (userRequest.getRole() == User.Role.EMPLOYEE && userRequest.getClinic() != null && userRequest.getClinic().getClinicId() != null) {
-            Clinic clinic = clinicRepository.findById(userRequest.getClinic().getClinicId()).orElse(null);
-            userRequest.setClinic(clinic);
-        } else if (userRequest.getRole() == User.Role.ADMIN) {
-            userRequest.setClinic(null); // Admins don't strictly need a clinic
+
+        // Create new user
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(passwordEncoder.encode(password));
+        user.setRole(User.Role.valueOf(roleStr));
+
+        // Set clinic if EMPLOYEE and clinicId is provided
+        if (user.getRole() == User.Role.EMPLOYEE && clinicId != null) {
+            Clinic clinic = clinicRepository.findById(clinicId).orElse(null);
+            user.setClinic(clinic);
         }
-        
-        userRepository.save(userRequest);
+
+        userRepository.save(user);
         return ResponseEntity.ok("User registered successfully");
     }
 }
