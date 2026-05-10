@@ -12,17 +12,17 @@ import java.util.Optional;
 @Repository
 public interface ExposureRepository extends JpaRepository<Exposure, Long> {
 
-    // Find exposures by clinic ID
-    List<Exposure> findByClinicId(Long clinicId);
+    // Find exposures by clinic ID - FIXED: use Clinic_ClinicId
+    List<Exposure> findByClinic_ClinicId(Long clinicId);
 
-    // Find exposures by patient ID - RETURNS LIST (not Optional)
-    List<Exposure> findByPatientId(Long patientId);
+    // Find exposures by patient ID - FIXED: use Patient_PatientId
+    List<Exposure> findByPatient_PatientId(Long patientId);
 
-    // Alternative: Find single exposure by patient ID (if one-to-one relationship)
-    Optional<Exposure> findFirstByPatientId(Long patientId);
+    // Alternative: Find single exposure by patient ID - FIXED
+    Optional<Exposure> findFirstByPatient_PatientId(Long patientId);
 
-    // Find exposures by patient ID ordered by date (most recent first)
-    List<Exposure> findByPatientIdOrderByExposureDateDesc(Long patientId);
+    // Find exposures by patient ID ordered by date - FIXED
+    List<Exposure> findByPatient_PatientIdOrderByExposureDateDesc(Long patientId);
 
     // Custom query to find exposure with patient details
     @Query("SELECT e FROM Exposure e LEFT JOIN FETCH e.patient WHERE e.patient.patientId = :patientId")

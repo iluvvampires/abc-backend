@@ -26,7 +26,7 @@ public class DashboardController {
     @GetMapping("/exposures/clinic/{clinicId}")
     public ResponseEntity<?> getExposuresByClinic(@PathVariable Long clinicId) {
         try {
-            List<Exposure> exposures = exposureRepository.findByClinicId(clinicId);
+            List<Exposure> exposures = exposureRepository.findByClinic_ClinicId(clinicId);
 
             System.out.println("Found " + exposures.size() + " exposures for clinic " + clinicId);
 
@@ -78,7 +78,7 @@ public class DashboardController {
     @PatchMapping("/patients/{id}/assess")
     public ResponseEntity<?> assessPatient(@PathVariable Long id, @RequestBody AssessmentRequest assessmentData) {
         // FIX: Find exposure by patient ID - returns a List, not Optional
-        List<Exposure> exposures = exposureRepository.findByPatientId(id);
+        List<Exposure> exposures = exposureRepository.findByPatient_PatientId(id);
 
         if (exposures.isEmpty()) {
             return ResponseEntity.notFound().build();
