@@ -58,11 +58,9 @@ public class RegistrationController {
             patient.setBirthdate(req.getBirthdate());
             patient.setGender(req.getGender());
             patient.setContactNumber(req.getContactNumber());
-            patient.setRegion(req.getRegion());
             patient.setProvince(req.getProvince());
             patient.setCity(req.getCity());
             patient.setBarangay(req.getBarangay());
-            patient.setZone(req.getZone() != null ? req.getZone() : "URBAN");
             patient.setStreetAddress(req.getStreetAddress());
             
             // IMPORTANT: Save patient first to generate ID

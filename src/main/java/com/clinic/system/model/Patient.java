@@ -36,9 +36,6 @@ public class Patient {
     private String contactNumber;
 
     @Column(nullable = false)
-    private String region;
-
-    @Column(nullable = false)
     private String province;
 
     @Column(nullable = false)
@@ -46,9 +43,6 @@ public class Patient {
 
     @Column(nullable = false)
     private String barangay;
-
-    @Column(nullable = false)
-    private String zone;
 
     @Column(name = "street_address", nullable = false)
     private String streetAddress;
@@ -135,14 +129,6 @@ public class Patient {
         this.contactNumber = contactNumber;
     }
 
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
     public String getProvince() {
         return province;
     }
@@ -165,14 +151,6 @@ public class Patient {
 
     public void setBarangay(String barangay) {
         this.barangay = barangay;
-    }
-
-    public String getZone() {
-        return zone;
-    }
-
-    public void setZone(String zone) {
-        this.zone = zone;
     }
 
     public String getStreetAddress() {

@@ -63,11 +63,9 @@ public class DashboardController {
             patient.setMiddleName(updatedPatient.getMiddleName());
             patient.setLastName(updatedPatient.getLastName());
             patient.setContactNumber(updatedPatient.getContactNumber());
-            patient.setRegion(updatedPatient.getRegion());
             patient.setProvince(updatedPatient.getProvince());
             patient.setCity(updatedPatient.getCity());
             patient.setBarangay(updatedPatient.getBarangay());
-            patient.setZone(updatedPatient.getZone());
             patient.setStreetAddress(updatedPatient.getStreetAddress());
             patientRepository.save(patient);
             return ResponseEntity.ok(patient);

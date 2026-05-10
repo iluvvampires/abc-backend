@@ -10,11 +10,9 @@ public class RegistrationRequest {
     private LocalDate birthdate;
     private String gender;
     private String contactNumber;
-    private String region;
     private String province;
     private String city;
     private String barangay;
-    private String zone;
     private String streetAddress;
     private LocalDate exposureDate;
     private String animalType;
@@ -37,16 +35,12 @@ public class RegistrationRequest {
     public void setGender(String gender) { this.gender = gender; }
     public String getContactNumber() { return contactNumber; }
     public void setContactNumber(String contactNumber) { this.contactNumber = contactNumber; }
-    public String getRegion() { return region; }
-    public void setRegion(String region) { this.region = region; }
     public String getProvince() { return province; }
     public void setProvince(String province) { this.province = province; }
     public String getCity() { return city; }
     public void setCity(String city) { this.city = city; }
     public String getBarangay() { return barangay; }
     public void setBarangay(String barangay) { this.barangay = barangay; }
-    public String getZone() { return zone; }
-    public void setZone(String zone) { this.zone = zone; }
     public String getStreetAddress() { return streetAddress; }
     public void setStreetAddress(String streetAddress) { this.streetAddress = streetAddress; }
     public Long getClinicId() { return clinicId; }
