@@ -27,7 +27,7 @@ public class AssessmentRequest {
     // Setters
     public void setExposureDate(LocalDate exposureDate) { this.exposureDate = exposureDate; }
     public void setAnimalType(String animalType) { this.animalType = animalType; }
-    public void setOtherAnimalSpecify(String otherAnimalSpecify) { this.animalType = animalType; }
+    public void setOtherAnimalSpecify(String otherAnimalSpecify) { this.otherAnimalSpecify = otherAnimalSpecify; }
     public void setBiteCategory(String biteCategory) { this.biteCategory = biteCategory; }
     public void setExposureType(String exposureType) { this.exposureType = exposureType; }
     public void setPlaceOfExposure(String placeOfExposure) { this.placeOfExposure = placeOfExposure; }
