@@ -6,6 +6,7 @@ import java.util.List;
 public class AssessmentRequest {
     private LocalDate exposureDate;
     private String animalType;
+    private String otherAnimalSpecify;
     private String biteCategory;
     private String exposureType;
     private String placeOfExposure;
@@ -17,6 +18,7 @@ public class AssessmentRequest {
     // Getters
     public LocalDate getExposureDate() { return exposureDate; }
     public String getAnimalType() { return animalType; }
+    public String getOtherAnimalSpecify() { return otherAnimalSpecify; }
     public String getBiteCategory() { return biteCategory; }
     public String getExposureType() { return exposureType; }
     public String getPlaceOfExposure() { return placeOfExposure; }
@@ -25,6 +27,7 @@ public class AssessmentRequest {
     // Setters
     public void setExposureDate(LocalDate exposureDate) { this.exposureDate = exposureDate; }
     public void setAnimalType(String animalType) { this.animalType = animalType; }
+    public void setOtherAnimalSpecify(String otherAnimalSpecify) { this.animalType = animalType; }
     public void setBiteCategory(String biteCategory) { this.biteCategory = biteCategory; }
     public void setExposureType(String exposureType) { this.exposureType = exposureType; }
     public void setPlaceOfExposure(String placeOfExposure) { this.placeOfExposure = placeOfExposure; }

@@ -96,6 +96,9 @@ public class DashboardController {
             if (assessmentData.getAnimalType() != null) {
                 exposure.setAnimalType(assessmentData.getAnimalType());
             }
+            if (assessmentData.getOtherAnimalSpecify() != null) {
+                exposure.setOtherAnimalSpecify(assessmentData.getOtherAnimalSpecify());
+            }
             if (assessmentData.getExposureType() != null) {
                 exposure.setExposureType(assessmentData.getExposureType());
             }
