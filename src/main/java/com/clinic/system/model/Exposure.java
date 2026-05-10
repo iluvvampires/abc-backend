@@ -12,7 +12,8 @@ public class Exposure {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "exposure_id")
+    private Long exposureId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "patient_id")
@@ -45,8 +46,8 @@ public class Exposure {
     public Exposure() {}
 
     // Getters - RETURN TYPE must be the data type (String, LocalDate, etc.)
-    public Long getId() {
-        return id;
+    public Long getExposureId() {
+        return exposureId;
     }
 
     public Patient getPatient() {
@@ -82,8 +83,8 @@ public class Exposure {
     }
 
     // Setters - RETURN TYPE is void
-    public void setId(Long id) {
-        this.id = id;
+    public void setExposureId(Long exposureId) {
+        this.exposureId = exposureId;
     }
 
     public void setPatient(Patient patient) {

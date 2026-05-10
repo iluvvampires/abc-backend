@@ -9,8 +9,12 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:5173") // Your React URL
-                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS") // Make sure PATCH is here!
+                .allowedOrigins(
+                        "http://localhost:5173",           // Local development
+                        "http://localhost:8080",           // Local alternative
+                        "https://abc-frontend-one.vercel.app"  // Your LIVE Vercel frontend
+                )
+                .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }

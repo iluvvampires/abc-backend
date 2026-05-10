@@ -32,7 +32,7 @@ public class AuthController {
         if (userOpt.isPresent()) {
             User user = userOpt.get();
             if (passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-                Long clinicId = user.getClinic() != null ? user.getClinic().getId() : null;
+                Long clinicId = user.getClinic() != null ? user.getClinic().getClinicId() : null;
                 return ResponseEntity.ok(new AuthResponse(user.getId(), user.getUsername(), user.getRole(), clinicId));
             }
         }
@@ -46,8 +46,8 @@ public class AuthController {
         }
         userRequest.setPassword(passwordEncoder.encode(userRequest.getPassword()));
         // Ensure clinic is set if role is EMPLOYEE
-        if (userRequest.getRole() == User.Role.EMPLOYEE && userRequest.getClinic() != null && userRequest.getClinic().getId() != null) {
-            Clinic clinic = clinicRepository.findById(userRequest.getClinic().getId()).orElse(null);
+        if (userRequest.getRole() == User.Role.EMPLOYEE && userRequest.getClinic() != null && userRequest.getClinic().getClinicId() != null) {
+            Clinic clinic = clinicRepository.findById(userRequest.getClinic().getClinicId()).orElse(null);
             userRequest.setClinic(clinic);
         } else if (userRequest.getRole() == User.Role.ADMIN) {
             userRequest.setClinic(null); // Admins don't strictly need a clinic

@@ -67,7 +67,7 @@ public class RegistrationController {
             
             // IMPORTANT: Save patient first to generate ID
             Patient savedPatient = patientRepository.save(patient);
-            System.out.println("Saved Patient ID: " + savedPatient.getId());
+            System.out.println("Saved Patient ID: " + savedPatient.getPatientId());
             
             // 3. Create Exposure with the SAVED patient ID
             Exposure exp = new Exposure();
@@ -90,13 +90,13 @@ public class RegistrationController {
             
             // Save exposure
             Exposure savedExposure = exposureRepository.save(exp);
-            System.out.println("Saved Exposure ID: " + savedExposure.getId());
-            System.out.println("Exposure Patient ID: " + savedExposure.getPatient().getId());
+            System.out.println("Saved Exposure ID: " + savedExposure.getExposureId());
+            System.out.println("Exposure Patient ID: " + savedExposure.getPatient().getPatientId());
             
             Map<String, Object> response = new HashMap<>();
             response.put("message", "Patient registered successfully");
-            response.put("patientId", savedPatient.getId());
-            response.put("exposureId", savedExposure.getId());
+            response.put("patientId", savedPatient.getPatientId());
+            response.put("exposureId", savedExposure.getExposureId());
             
             return ResponseEntity.ok(response);
             

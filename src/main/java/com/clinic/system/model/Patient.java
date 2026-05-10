@@ -14,7 +14,8 @@ public class Patient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "patient_id")
+    private Long patientId;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -83,13 +84,8 @@ public class Patient {
     }
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public Long getPatientId() { return patientId; }
+    public void setPatientId(Long patientId) { this.patientId = patientId; }
 
     public String getFirstName() {
         return firstName;

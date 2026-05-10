@@ -31,9 +31,9 @@ public class DashboardController {
             System.out.println("Found " + exposures.size() + " exposures for clinic " + clinicId);
 
             for (Exposure exp : exposures) {
-                System.out.println("Exposure ID: " + exp.getId() +
+                System.out.println("Exposure ID: " + exp.getExposureId() +
                         ", Patient: " + (exp.getPatient() != null ? exp.getPatient().getFirstName() : "NULL") +
-                        ", Patient ID: " + (exp.getPatient() != null ? exp.getPatient().getId() : "NULL"));
+                        ", Patient ID: " + (exp.getPatient() != null ? exp.getPatient().getPatientId() : "NULL"));
             }
 
             return ResponseEntity.ok(exposures);

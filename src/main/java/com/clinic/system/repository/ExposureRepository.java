@@ -25,6 +25,6 @@ public interface ExposureRepository extends JpaRepository<Exposure, Long> {
     List<Exposure> findByPatientIdOrderByExposureDateDesc(Long patientId);
 
     // Custom query to find exposure with patient details
-    @Query("SELECT e FROM Exposure e LEFT JOIN FETCH e.patient WHERE e.patient.id = :patientId")
+    @Query("SELECT e FROM Exposure e LEFT JOIN FETCH e.patient WHERE e.patient.patientId = :patientId")
     Optional<Exposure> findExposureWithPatientByPatientId(@Param("patientId") Long patientId);
 }
